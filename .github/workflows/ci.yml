@@ -1,4 +1,4 @@
-name: Angular Test Project
+name: Frontend CI
 
 on:
   push:
@@ -22,16 +22,10 @@ jobs:
         node-version: '20.13.1'
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Build Angular project
-      run: npm run build -- --prod
+      run: npm run build -- --configuration production
 
     - name: Run tests
       run: npm test
-
-    - name: Upload build artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: dist
-        path: dist/
