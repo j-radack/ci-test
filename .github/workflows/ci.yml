@@ -33,15 +33,12 @@ jobs:
       run: npm run build -- --configuration production
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v2
       with:
         path: dist/my
 
     - name: Setup Pages
       uses: actions/configure-pages@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        enablement: false
 
     - name: Deploy to GitHub Pages
       id: deplyment
