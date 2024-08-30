@@ -35,7 +35,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
-        name: build-output
+        name: github-pages
         path: dist/my
 
     - name: Setup Pages
@@ -48,3 +48,4 @@ jobs:
       uses: actions/deploy-pages@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        artifact-name: github-pages
