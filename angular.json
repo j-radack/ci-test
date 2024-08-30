@@ -10,15 +10,6 @@
           "style": "less"
         }
       },
-      "ci-test": {
-        "architect": {
-          "build": {
-            "options": {
-              "outputPath": "dist/my"
-            }
-          }
-        }
-      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
