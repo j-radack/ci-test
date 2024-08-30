@@ -8,20 +8,14 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    permissions:
-      contents: 'read'
-      id-token: 'write'
-      pages: 'write'
-      actions: 'write'
-      checks: 'write'
-      deployments: 'write'
 
     steps:
     - name: Checkout code
@@ -41,16 +35,5 @@ jobs:
     - name: Setup Pages
       uses: actions/configure-pages@v3
 
-    - name: List build output
-      run: ls -l dist/my
-
-    - name: Configure Git
-      run: |
-        git config --global user.name "GitHub Actions"
-        git config --global user.email "actions@github.com"
-
     - name: Deploy to GitHub Pages
-      id: deployment
       uses: actions/deploy-pages@v1
-      env:  
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
