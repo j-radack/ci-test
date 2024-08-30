@@ -37,6 +37,6 @@ jobs:
 
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: ${{ secrets.MY_PERSONAL_ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        npx angular-cli-ghpages --dir=dist/my --message "Automated deployment" --no-silent
+        npx angular-cli-ghpages --dir=dist/my --message "Automated deployment" --no-silent --repo=https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/j-radack/ci-test.git
