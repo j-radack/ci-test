@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 permissions:
   contents: read
@@ -14,35 +11,12 @@ permissions:
   id-token: write
 
 jobs:
-  build:
-    runs-on: ubuntu-22.04
+  deploy:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.13.1'
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build Angular project
-      run: npm run build -- --configuration production
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: github-pages
-        path: dist/my
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        enablement: false
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v1
