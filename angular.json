@@ -14,7 +14,7 @@
         "architect": {
           "build": {
             "options": {
-              "outputPath": "dist/ci-test"
+              "outputPath": "dist/my"
             }
           }
         }

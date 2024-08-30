@@ -1,4 +1,4 @@
-name: Frontend CI
+name: CI/CD test
 
 on:
   push:
@@ -28,10 +28,10 @@ jobs:
       run: npm run build -- --configuration production
 
     - name: List build output
-      run: ls -l dist/ci-test
+      run: ls -l dist/my
 
     - name: Deploy to GitHub Pages
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        npx angular-cli-ghpages --dir=dist/ci-test
+        npx angular-cli-ghpages --dir=dist/my
