@@ -44,6 +44,5 @@ jobs:
         enablement: false
 
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      id: deplyment
+      uses: actions/deploy-pages@v2
