@@ -32,8 +32,20 @@ jobs:
     - name: Build Angular project
       run: npm run build -- --configuration production
 
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build-output
+        path: dist/my
+
     - name: Setup Pages
       uses: actions/configure-pages@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        enablement: false
 
     - name: Deploy to GitHub Pages
       uses: actions/deploy-pages@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifact-name: build-output
