@@ -1,9 +1,6 @@
 name: CI/CD Test
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -36,5 +33,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/my
+        publish_dir: ./dist/my/browser
         publish_branch: gh-pages
