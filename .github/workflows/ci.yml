@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -32,19 +32,10 @@ jobs:
     - name: Build Angular project
       run: npm run build -- --configuration production
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: github-pages
-        path: dist/my
-
-    - name: Setup Pages
-      uses: actions/configure-pages@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        enablement: false
-
     - name: Deploy to GitHub Pages
-      uses: actions/deploy-pages@v1
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/my  # Ensure this matches your build output directory
+        publish_branch: gh-pages  # Specify the branch for GitHub Pages
+        destination_dir: ./  # Deploy to the root of the gh-pages branch
