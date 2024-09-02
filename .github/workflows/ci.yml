@@ -36,6 +36,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist/my  # Ensure this matches your build output directory
-        publish_branch: gh-pages  # Specify the branch for GitHub Pages
-        destination_dir: ./  # Deploy to the root of the gh-pages branch
+        publish_dir: ./dist/my
+        publish_branch: gh-pages

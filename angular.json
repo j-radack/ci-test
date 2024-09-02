@@ -43,6 +43,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/ci-test/",
               "budgets": [
                 {
                   "type": "initial",
