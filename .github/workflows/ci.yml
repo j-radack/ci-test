@@ -1,12 +1,14 @@
-name: Angular Test Project
+name: CI/CD Test
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build:
@@ -14,7 +16,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
@@ -22,16 +24,14 @@ jobs:
         node-version: '20.13.1'
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Build Angular project
-      run: npm run build -- --prod
+      run: npm run build -- --configuration production
 
-    - name: Run tests
-      run: npm test
-
-    - name: Upload build artifact
-      uses: actions/upload-artifact@v3
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
       with:
-        name: dist
-        path: dist/
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist/my/browser
+        publish_branch: gh-pages
